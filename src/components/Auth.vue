@@ -13,14 +13,21 @@
       </div>
 
       <div class="auth__btn-container">
-        <button class="auth__btn">Войти</button>
+        <button @click="authUser" class="auth__btn">Войти</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    authUser() {
+      console.log(this);
+      this.$router.push("/user"); //переход на новую страницу с добавлением в путь /user
+    },
+  },
+};
 </script>
 
 <style scoped>
