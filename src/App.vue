@@ -1,21 +1,13 @@
 <template>
-  <div>
-    <div v-for="number in numbers" :key="number">{{ number }}</div>
-  </div>
+  <auth />
 </template>
 
 <script>
+import auth from "./components/Auth.vue";
+
 export default {
-  data() {
-    return {
-      numbers: [1, 2, 3, 4, 5],
-    };
-  },
+  components: { auth },
 };
 </script>
 
-<style scoped>
-.title {
-  font-weight: bold;
-}
-</style>
+<style scoped></style>
