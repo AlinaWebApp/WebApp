@@ -16,7 +16,6 @@ export const init = () => {
   try {
     sequelize.addModels([User, Todo]);
   } catch (error) {
-    console.log(error);
     console.error({
       errorCode: 500,
       errorMessage: 'No connection to DB',
