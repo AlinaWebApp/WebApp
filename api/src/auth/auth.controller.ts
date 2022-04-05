@@ -1,4 +1,4 @@
-import { Controller, Delete, Get, Post, Res, UseGuards } from '@nestjs/common';
+import { Controller, Delete, Get, Post, UseGuards } from '@nestjs/common';
 import { LoginGuard } from 'src/common/guards/login.guard';
 import { LogoutGuard } from 'src/common/guards/logout.guard';
 import { SignupGuard } from 'src/common/guards/signup.guard';
@@ -25,14 +25,8 @@ export class AuthController {
   }
 
   @Get('/signup/confirmation/:username/:usernameHash')
-  async verifyAccout(@Res() res, @customUser() user: CreateUserHashDto): Promise<IMessage> {
-    const verificationResult = await this.authService.verifyAccount(user);
-
-    if (!verificationResult.error) {
-      res.redirect('http://localhost:8080/email/confirmation/status');
-    }
-
-    return verificationResult;
+  verifyAccout(@customUser() user: CreateUserHashDto): Promise<IMessage> {
+    return this.authService.verifyAccount(user);
   }
 
   @UseGuards(LogoutGuard)

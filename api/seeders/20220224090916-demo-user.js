@@ -4,18 +4,20 @@ const faker = require('faker');
 module.exports = {
   async up(queryInterface) {
     await queryInterface.bulkInsert('Users', [
-      // Password for all: 123456
+      // Password for all: 12345
       {
         username: faker.internet.email(),
 
-        password: '$2a$12$ogvcD40cURM8.9o7zah8qeVyW.y9FJagnx6WM.OSoE1JxTBxwpH9q',
+        password:
+          '$2a$12$H.1NpjCF5MCoTHyQd8TVVud8vwf4WpSCsxvVw7jcxWVEWGtto5Z1G',
 
         verified: true,
       },
       {
         username: faker.internet.email(),
 
-        password: '$2a$12$ogvcD40cURM8.9o7zah8qeVyW.y9FJagnx6WM.OSoE1JxTBxwpH9q',
+        password:
+          '$2a$12$H.1NpjCF5MCoTHyQd8TVVud8vwf4WpSCsxvVw7jcxWVEWGtto5Z1G',
 
         verified: false,
       },
@@ -26,7 +28,8 @@ module.exports = {
     await queryInterface.bulkDelete(
       'Users',
       {
-        password: '$2a$12$H.1NpjCF5MCoTHyQd8TVVud8vwf4WpSCsxvVw7jcxWVEWGtto5Z1G',
+        password:
+          '$2a$12$H.1NpjCF5MCoTHyQd8TVVud8vwf4WpSCsxvVw7jcxWVEWGtto5Z1G',
       },
       {},
     );

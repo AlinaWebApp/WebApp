@@ -1,4 +1,12 @@
-import { Controller, Delete, Get, Patch, Post, Put, UseGuards } from '@nestjs/common';
+import {
+  Controller,
+  Delete,
+  Get,
+  Patch,
+  Post,
+  Put,
+  UseGuards,
+} from '@nestjs/common';
 
 import { AuthenticatedGuard } from '../common/guards/authenticated.guard';
 import { customUser } from './decorators/user.decorator';
@@ -12,7 +20,10 @@ import { admin } from './decorators/admin.decorator';
 
 @Controller('user')
 export class UsersController {
-  constructor(private todosService: TodosService, private usersService: UsersService) {}
+  constructor(
+    private todosService: TodosService,
+    private usersService: UsersService,
+  ) {}
 
   @UseGuards(AuthenticatedGuard, RolesGuard)
   @Get('/all')

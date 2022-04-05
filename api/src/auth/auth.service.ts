@@ -14,7 +14,11 @@ export class AuthService {
     try {
       const user = await this.usersService.getUserByName(username);
 
-      if (user && user.verified && (await areHashesEqual(pass, user.password))) {
+      if (
+        user &&
+        user.verified &&
+        (await areHashesEqual(pass, user.password))
+      ) {
         const { ...result } = user.toJSON();
 
         return result;
@@ -27,8 +31,8 @@ export class AuthService {
       return null;
     }
   }
-  #genResponce(message: string, username?: string, error = false): IMessage {
-    return { message, username, error };
+  #genResponce(message: string, username?: string): IMessage {
+    return { message, username };
   }
 
   login(user: CreateUserDto): IMessage {
@@ -43,7 +47,7 @@ export class AuthService {
     } catch {
       await this.usersService.addUser(user);
 
-      const confLink = `http://localhost:8000/auth/signup/confirmation/${
+      const confLink = `http://localhost:3000/auth/signup/confirmation/${
         user.username
       }/${getUsernameHash(user.username)}`;
 
@@ -54,7 +58,8 @@ export class AuthService {
   async verifyAccount(user: CreateUserHashDto): Promise<IMessage> {
     const dbUser = await this.usersService.getUserByName(user.username);
 
-    if (dbUser.verified) return this.#genResponce('Account was already verified');
+    if (dbUser.verified)
+      return this.#genResponce('Account was already verified');
 
     if (getUsernameHash(user.username) === user.usernameHash) {
       await this.usersService.setUserVerified(user.username);
@@ -62,7 +67,7 @@ export class AuthService {
       return this.#genResponce('Account was verified');
     }
 
-    return this.#genResponce('Confirmation link not correct', 'any', true);
+    return this.#genResponce('Confirmation link not correct');
   }
 
   logout(): IMessage {

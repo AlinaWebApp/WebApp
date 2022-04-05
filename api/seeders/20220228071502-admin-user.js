@@ -1,11 +1,12 @@
 module.exports = {
   async up(queryInterface) {
     await queryInterface.bulkInsert('Users', [
-      // Password for admin: 123456
+      // Password for admin: admin
       {
-        username: 'admin@admin.admin',
+        username: 'admin',
 
-        password: '$2a$12$ogvcD40cURM8.9o7zah8qeVyW.y9FJagnx6WM.OSoE1JxTBxwpH9q',
+        password:
+          '$2a$12$uXYqdj.oyKiKdhgL09pycuHBNdVbjA6NTrybl3iLiZr3F0P6W7ht.',
 
         admin: true,
 
@@ -18,7 +19,8 @@ module.exports = {
     await queryInterface.bulkDelete(
       'Users',
       {
-        password: '$2a$12$ogvcD40cURM8.9o7zah8qeVyW.y9FJagnx6WM.OSoE1JxTBxwpH9q',
+        password:
+          '$2a$12$uXYqdj.oyKiKdhgL09pycuHBNdVbjA6NTrybl3iLiZr3F0P6W7ht.',
       },
       {},
     );
