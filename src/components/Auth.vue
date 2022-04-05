@@ -14,10 +14,14 @@
       <div class="form-container sign-in-container">
         <form action="#">
           <h1>Sign in</h1>
-          <input type="email" placeholder="Email" />
-          <input type="password" placeholder="Password" />
+          <input v-model="loginEmail" type="email" placeholder="Email" />
+          <input
+            v-model="loginPassword"
+            type="password"
+            placeholder="Password"
+          />
           <a href="#">Forgot your password?</a>
-          <button>Sign In</button>
+          <button @click="login">Sign In</button>
         </form>
       </div>
       <div class="overlay-container">
@@ -46,6 +50,8 @@ export default {
     // состояние моего компонента (весь template)
     return {
       isSignUpClicked: false,
+      loginEmail: "",
+      loginPassword: "",
     };
   },
 
@@ -56,6 +62,15 @@ export default {
 
     signIn() {
       this.isSignUpClicked = false;
+    },
+    async login() {
+      const responce = await fetch("http://localhost:8000/auth/login", {
+        method: "POST",
+        body: {
+          username: this.loginEmail,
+          password: this.loginPassword,
+        },
+      });
     },
   },
 };
