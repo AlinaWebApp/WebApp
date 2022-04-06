@@ -1,13 +1,10 @@
 <template>
-  <auth />
+  <router-view />
+  <!-- это компонент в который поставляются страницы при соответсвии какого-то пути -->
 </template>
 
 <script>
-import auth from "./components/Auth.vue";
-
-export default {
-  components: { auth },
-};
+export default {};
 </script>
 
 <style scoped></style>

@@ -64,13 +64,23 @@ export default {
       this.isSignUpClicked = false;
     },
     async login() {
-      const responce = await fetch("http://localhost:8000/auth/login", {
-        method: "POST",
-        body: {
-          username: this.loginEmail,
-          password: this.loginPassword,
-        },
-      });
+      try {
+        const responce = await this.axios.post(
+          // кидаем запрос на сервер
+          "http://localhost:8000/auth/login",
+          {
+            username: this.loginEmail, // эти перемнные равны тому что я введу в input
+            password: this.loginPassword,
+          }
+        );
+
+        if (responce.data.username) {
+          // если мы зашли, то меняется путь
+          this.$router.push("/main");
+        }
+      } catch (error) {
+        console.error(error);
+      }
     },
   },
 };
