@@ -33,6 +33,20 @@
       >
     </div>
   </header>
+  <div class="container-left">
+    <div class="container-left-wr">
+      <div class="content-box">
+        <ul class="content-box_list">
+          <li class="content-box_item">Выбрать кредит</li>
+          <li class="content-box_item">Выставить нужную сумму</li>
+          <li class="content-box_item">Выбрать период</li>
+          <li class="content-box_item">Нажать кнопку оформить</li>
+        </ul>
+
+        <a href="/types" class="shine-button">Кредиты</a>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -51,6 +65,7 @@ export default {};
 a {
   display: block;
 }
+
 .main-page-header {
   display: flex;
   align-items: center;
@@ -90,6 +105,62 @@ a {
 }
 
 .content-wrapper__link {
-    margin-right: 20px;
+  margin-right: 20px;
+}
+
+.container-left {
+  float: left;
+  width: 50%;
+  height: 100vh;
+}
+.container-left-wr {
+  display: flex;
+  justify-content: center;
+  margin-top: 25%;
+  height: 50vh;
+}
+.content-box_list {
+  line-height: 295%;
+}
+.content-box_item {
+}
+
+body {
+  background: #ffbfbe;
+}
+.shine-button {
+  text-decoration: none;
+  display: inline-block;
+  padding: 10px 30px;
+  margin-top: 17px;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid #cbe04a;
+  border-radius: 8px;
+  font-family: "Montserrat", sans-serif;
+  color: #3c97bf;
+  transition: 0.2s ease-in-out;
+}
+.shine-button:before {
+  content: "";
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.5)
+  );
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  top: -8px;
+  left: -75px;
+  transform: skewX(-45deg);
+}
+.shine-button:hover {
+  background: #cbe04a;
+  color: #fff;
+}
+.shine-button:hover:before {
+  left: 150px;
+  transition: 0.5s ease-in-out;
 }
 </style>
