@@ -47,6 +47,7 @@ export default {};
   list-style: none;
   box-sizing: border-box;
   color: black;
+  font-family: "Montserrat", sans-serif;
 }
 a {
   display: block;
@@ -88,6 +89,7 @@ a {
   justify-content: center;
   flex: 1;
   width: 90px;
+  margin-right: 20px;
 }
 
 .content-wrapper__link {
