@@ -33,20 +33,6 @@
       >
     </div>
   </header>
-  <div class="container-left">
-    <div class="container-left-wr">
-      <div class="content-box">
-        <ul class="content-box_list">
-          <li class="content-box_item">Выбрать кредит</li>
-          <li class="content-box_item">Выставить нужную сумму</li>
-          <li class="content-box_item">Выбрать период</li>
-          <li class="content-box_item">Нажать кнопку оформить</li>
-        </ul>
-
-        <a href="/types" class="shine-button">Кредиты</a>
-      </div>
-    </div>
-  </div>
 </template>
 
 <script>
@@ -69,7 +55,7 @@ a {
 .main-page-header {
   display: flex;
   align-items: center;
-  height: 10vh;
+  height: 10%;
   border-bottom: solid 1px gray;
 }
 .container {
@@ -106,96 +92,5 @@ a {
 
 .content-wrapper__link {
   margin-right: 20px;
-}
-
-.container-left {
-  float: left;
-  width: 50%;
-  height: 100vh;
-}
-.container-left-wr {
-  display: flex;
-  justify-content: center;
-  margin-top: 25%;
-  height: 50vh;
-}
-.content-box_list {
-  list-style: none;
-  font-family: "Lucida Sans";
-}
-.content-box_item {
-  position: relative;
-  padding: 20px 0 20px 40px;
-  color: #33333391;
-  font-variant: small-caps;
-  font-weight: bold;
-  cursor: pointer;
-}
-.content-box_item::before {
-  position: absolute;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #4f5151;
-  content: "";
-  left: 0;
-  transition: 0.3s ease-in-out;
-  top: 27px;
-}
-.content-wrapper__item::after {
-  position: absolute;
-  border-left: 1px dotted #4f5151;
-  width: 1px;
-  bottom: -12px;
-  content: "";
-  left: 153px;
-  top: 240px;
-  height: 177px;
-}
-.content-wrapper__item:hover::before {
-  box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.2);
-}
-.content-box_item:last-child::after {
-  content: none;
-}
-
-body {
-  background: #ffbfbe;
-}
-.shine-button {
-  text-decoration: none;
-  display: inline-block;
-  padding: 10px 30px;
-  margin-top: 38px;
-  position: relative;
-  overflow: hidden;
-  border: 2px solid #3c97bf;
-  border-radius: 8px;
-  font-family: "Montserrat", sans-serif;
-  font-weight: bold;
-  color: #3c97bf;
-  transition: 0.2s ease-in-out;
-}
-.shine-button:before {
-  content: "";
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0.1),
-    rgba(255, 255, 255, 0.5)
-  );
-  height: 50px;
-  width: 50px;
-  position: absolute;
-  top: -8px;
-  left: -75px;
-  transform: skewX(-45deg);
-}
-.shine-button:hover {
-  background: #cbe04a;
-  color: #fff;
-}
-.shine-button:hover:before {
-  left: 150px;
-  transition: 0.5s ease-in-out;
 }
 </style>

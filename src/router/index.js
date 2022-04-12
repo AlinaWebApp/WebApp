@@ -14,6 +14,7 @@ const router = createRouter({
       name: "MainPage",
       component: () => import("../views/MainPage.vue"), // => стрелочная функция (функция без параметров), когда функция вызывается происходит импортирование 
     },
+   
   ],
 });
 
