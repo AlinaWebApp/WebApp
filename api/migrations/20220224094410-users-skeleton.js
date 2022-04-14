@@ -6,6 +6,7 @@ module.exports = {
         primaryKey: true,
         autoIncrement: true,
       },
+      name: Sequelize.DataTypes.STRING,
       username: Sequelize.DataTypes.STRING,
       password: Sequelize.DataTypes.STRING,
       verified: Sequelize.DataTypes.BOOLEAN,

@@ -8,4 +8,5 @@ export default interface IUser {
   password?: string;
   verified?: boolean;
   todos?: ITodo[];
+  name?: string;
 }

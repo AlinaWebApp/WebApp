@@ -28,15 +28,20 @@
           </li>
         </ul>
       </div>
-      <router-link to="/logout" class="content-wrapper__link"
-        >Выйти</router-link
-      >
+      <div @click="logout" class="content-wrapper__link">Выйти</div>
     </div>
   </header>
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    logout() {
+      this.axios.delete("http://localhost:8000/auth/logout"); // с помощью метода типа delete отправляем запрос на сервер чтобы мы вышли из акк
+      this.$router.push("/"); //перекинуть на начальную стр
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -94,5 +99,6 @@ a {
 
 .content-wrapper__link {
   margin-right: 20px;
+  cursor: pointer;
 }
 </style>

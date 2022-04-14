@@ -6,6 +6,8 @@ module.exports = {
     await queryInterface.bulkInsert('Users', [
       // Password for all: 12345
       {
+        name: 'Alex',
+
         username: faker.internet.email(),
 
         password:
@@ -14,12 +16,14 @@ module.exports = {
         verified: true,
       },
       {
+        name: 'George',
+
         username: faker.internet.email(),
 
         password:
           '$2a$12$H.1NpjCF5MCoTHyQd8TVVud8vwf4WpSCsxvVw7jcxWVEWGtto5Z1G',
 
-        verified: false,
+        verified: true,
       },
     ]);
   },

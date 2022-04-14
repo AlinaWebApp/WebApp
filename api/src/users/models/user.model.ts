@@ -7,6 +7,9 @@ import Todo from '../../todos/models/todo.model';
 })
 class User extends Model {
   @Column
+  name: string;
+
+  @Column
   username: string;
 
   @Column
