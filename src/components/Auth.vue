@@ -5,14 +5,18 @@
       <div class="form-container sign-up-container">
         <form action="#">
           <h1>Create Account</h1>
-          <input type="text" placeholder="Name" />
-          <input type="email" placeholder="Email" />
-          <input type="password" placeholder="Password" />
-          <button>Sign Up</button>
+          <input v-model="signupName" type="text" placeholder="Name" />
+          <input v-model="signupLogin" type="email" placeholder="Email" />
+          <input
+            v-model="signupPassword"
+            type="password"
+            placeholder="Password"
+          />
+          <button @click="signup">Sign Up</button>
         </form>
       </div>
       <div class="form-container sign-in-container">
-        <form action="#">
+        <form>
           <h1>Sign in</h1>
           <input v-model="loginEmail" type="email" placeholder="Email" />
           <input
@@ -36,7 +40,7 @@
           <div class="overlay-panel overlay-right">
             <h1>Hello, Friend!</h1>
             <p>Enter your personal details and start journey with us</p>
-            <button class="ghost" @click="signUp">Sign Up</button>
+            <button class="ghost" @click.prevent="signUp">Sign Up</button>
           </div>
         </div>
       </div>
@@ -52,6 +56,9 @@ export default {
       isSignUpClicked: false,
       loginEmail: "",
       loginPassword: "",
+      signupName: "",
+      signupLogin: "",
+      signupPassword: "",
     };
   },
 
@@ -63,8 +70,11 @@ export default {
     signIn() {
       this.isSignUpClicked = false;
     },
-    async login() {
+
+    async login(e) {
       try {
+        e.preventDefault();
+
         const responce = await this.axios.post(
           // кидаем запрос на сервер
           "http://localhost:8000/auth/login",
@@ -74,13 +84,51 @@ export default {
           }
         );
 
-        if (responce.data.username) {
+        if (responce.data.name) {
           // если мы зашли, то меняется путь
           this.$router.push("/main");
         }
       } catch (error) {
         console.error(error);
       }
+    },
+
+    async signup(e) {
+      e.preventDefault();
+
+      const responce = await this.axios.post(
+        // кидаем запрос на сервер на регестрацию
+        "http://localhost:8000/auth/signup",
+        {
+          name: this.signupName,
+          username: this.signupLogin, // эти перемнные равны тому что я введу в input
+          password: this.signupPassword,
+        }
+      );
+
+      const data = responce.data; // это ответ сервера
+
+      // в объекте data обращаюсь к полю name
+      if (data.name) {
+        const res = await this.axios.post(
+          // кидаем запрос на сервер
+          "http://localhost:8000/auth/login",
+          {
+            username: this.signupLogin, // эти перемнные равны тому что я введу в input
+            password: this.signupPassword,
+          }
+        );
+        // если вход успешный
+        if (res.data.name) {
+          this.$router.push("/main");
+        }
+
+        return;
+      }
+      //если вход неуспешный, то поля очистятся
+      this.signupName = "";
+      this.signupLogin = "";
+      this.signupPassword = "";
     },
   },
 };
