@@ -8,9 +8,10 @@ export class UsersService {
   async addUser(user: CreateUserDto): Promise<User> {
     return (
       await User.create({
+        name: user.name,
         username: user.username,
         password: await getHash(user.password, 12),
-        verified: false,
+        verified: true,
         admin: false,
       })
     ).toJSON();

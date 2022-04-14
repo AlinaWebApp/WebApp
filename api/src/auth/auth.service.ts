@@ -6,6 +6,7 @@ import IMessage from '../Interfaces/message.interface';
 import CreateUserDto from '../users/dtos/CreateUserDto.dto';
 import CreateUserHashDto from '../users/dtos/CreateUserHashDto.dto';
 import IUser from '../users/interfaces/user.interface';
+import User from 'src/users/models/user.model';
 @Injectable()
 export class AuthService {
   constructor(private usersService: UsersService) {}
@@ -13,7 +14,6 @@ export class AuthService {
   async validateUser(username: string, pass: string): Promise<IUser> {
     try {
       const user = await this.usersService.getUserByName(username);
-
       if (
         user &&
         user.verified &&
@@ -32,26 +32,28 @@ export class AuthService {
     }
   }
   #genResponce(message: string, username?: string): IMessage {
-    return { message, username };
+    return { message, name: username };
   }
 
   login(user: CreateUserDto): IMessage {
-    return this.#genResponce('Successfully logged in', user.username);
+    return this.#genResponce('Successfully logged in', user.name);
   }
 
-  async genSignupLink(user: CreateUserDto): Promise<IMessage> {
+  async genSignupLink(user: CreateUserDto): Promise<User | IMessage> {
     try {
       await this.usersService.getUserByName(user.username);
 
       return this.#genResponce('User already exists');
     } catch {
-      await this.usersService.addUser(user);
+      if (!user.name) return this.#genResponce('User must have a name');
+
+      const newUser = await this.usersService.addUser(user);
 
       const confLink = `http://localhost:3000/auth/signup/confirmation/${
         user.username
       }/${getUsernameHash(user.username)}`;
 
-      return { confLink };
+      return newUser;
     }
   }
 

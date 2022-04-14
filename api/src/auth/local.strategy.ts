@@ -16,6 +16,6 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
       throw new HttpException('Login or password incorrect', 401);
     }
 
-    return { id: user.id, username: user.username };
+    return { id: user.id, username: user.username, name: user.name };
   }
 }

@@ -15,7 +15,12 @@ export class SessionSerializer extends PassportSerializer {
   ): Promise<void> {
     const dbUser = await this.usersService.getUserByName(user.username);
 
-    done(null, { id: user.id, username: user.username, admin: dbUser.admin });
+    done(null, {
+      id: user.id,
+      username: user.username,
+      name: user.name,
+      admin: dbUser.admin,
+    });
   }
 
   deserializeUser(

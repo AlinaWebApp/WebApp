@@ -8,12 +8,14 @@ export const customUser = createParamDecorator(
       request.body?.username ||
       request.user?.username;
 
+  
+    const name = request.body?.name || request.user?.name;
     const usernameHash = request.params?.usernameHash;
     const password = request.body?.password;
     const verified = request.body?.verified;
     const admin = request.user?.admin;
     const id = request.user?.id || +request.params?.id;
 
-    return { username, usernameHash, password, verified, admin, id };
+    return { username, usernameHash, name, password, verified, admin, id };
   },
 );
