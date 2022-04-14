@@ -11,9 +11,14 @@ const router = createRouter({
       component: AuthPage,
     },
     {
-      path: "/main",
+      path: "/main/:name", //динамический параметр, после слэша может быть любой путь
       name: "MainPage",
       component: () => import("../views/MainPage.vue"), // => стрелочная функция (функция без параметров), когда функция вызывается происходит импортирование
+    },
+    {
+      path: "/about",
+      name: "AboutUs",
+      component: () => import("../views/AboutUs.vue"),
     },
   ],
 });
@@ -26,16 +31,29 @@ router.beforeEach(async (to) => {
 
     const isAuth = responce.data; // и получаю ответ от сервера
 
+    // если мы не в акк.. чтобы мы не могли прописать путь для перехода на гл стр
     if (!isAuth && to.name !== "LoginPage") {
-      // если мы не в акк.. чтобы мы не могли прописать путь для перехода на гл стр
       return {
         name: "LoginPage",
       };
     }
+
+    // если я в акк .. и пытаюсь зайти на начальную страницу-не могу зайти
     if (isAuth && to.name === "LoginPage") {
-      // если я в акк .. и пытаюсь зайти на начальную страницу-не могу зайти
       return {
         name: "MainPage",
+        params: {
+          name: isAuth,
+        },
+      };
+    }
+
+    if (to.fullPath === "/main") {
+      return {
+        name: "MainPage",
+        params: {
+          name: isAuth,
+        },
       };
     }
   } catch (error) {

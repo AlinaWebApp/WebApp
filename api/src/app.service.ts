@@ -4,6 +4,6 @@ import User from './users/models/user.model';
 @Injectable()
 export class AppService {
   isAuthenticated(user: User) {
-    return user.username;
+    return user.name;
   }
 }

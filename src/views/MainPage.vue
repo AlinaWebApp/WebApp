@@ -6,7 +6,7 @@
         <credit-way-main-page />
       </div>
       <div class="container-right">
-        <div class="backgroud-text">Приветствуем, кто-то там</div>
+        <div class="backgroud-text">Приветствуем, {{ $route.params.name }}</div>
         <div class="background"></div>
       </div>
     </div>

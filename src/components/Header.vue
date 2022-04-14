@@ -38,7 +38,7 @@ export default {
   methods: {
     logout() {
       this.axios.delete("http://localhost:8000/auth/logout"); // с помощью метода типа delete отправляем запрос на сервер чтобы мы вышли из акк
-      this.$router.push("/"); //перекинуть на начальную стр
+      setTimeout(() => this.$router.push("/")); //перекинуть на начальную стр
     },
   },
 };
