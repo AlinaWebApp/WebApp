@@ -59,6 +59,22 @@
         высокоэффективной, динамично развивающейся бизнес - модели, современных
         информационных технологий и высоких стандартов обслуживания.
       </div>
+      <div class="third-content">
+        <div class="statusbank">
+          <div class="logo"></div>
+          <div class="logo-text">
+            <p>Адкрытае акцыянернае таварыства «СтатусБанк»</p>
+            <p>(АТТ «СтатусБанк»)</p>
+            <p>Открытое акционерное общество «СтатусБанк»</p>
+            <p>(ОАО «СтатусБанк»)</p>
+            <p>Joint Stock Company «StatusBank»</p>
+            <p>(JSC “StatusBank”)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="img">
+      <div class="back"></div>
     </div>
   </div>
 </template>
@@ -103,9 +119,10 @@ export default {};
 }
 .item {
   font-family: "Montserrat", sans-serif;
+  color: #63afb7;
 }
 .text {
-  border: 1px solid black;
+  border: 1px solid #63afb7;
   padding: 10px;
   border-radius: 30px;
 }
@@ -113,8 +130,12 @@ export default {};
   margin-right: 0;
 }
 .second-content {
+  width: 100%;
+}
+.wrraper {
   width: 50%;
-  margin-top: 2%;
+  margin-top: 0%;
+  float: left;
 }
 .mission {
   letter-spacing: 0px;
@@ -128,5 +149,36 @@ export default {};
 .mission-text {
   margin-left: 20px;
   margin-top: 10px;
+}
+.img {
+  width: 50%;
+  float: right;
+}
+.back {
+  background-image: url("../assets/about-us.svg");
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: contain;
+  position: absolute;
+  width: 47%;
+  height: 43%;
+  margin-top: 69px;
+}
+.logo {
+  background-image: url("../assets/logo-about-us.png");
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: contain;
+  position: absolute;
+}
+.logo-text {
+  letter-spacing: 0px;
+  font-weight: normal;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: "Montserrat", sans-serif;
+  margin-top: 45px;
+  margin-left: 19px;
+
 }
 </style>

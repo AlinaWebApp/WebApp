@@ -2,12 +2,13 @@
   <div class="main-container">
     <header-main-page />
     <div class="full">
-      <div class="right">
+      
         <div class="content-container">
           <title-about />
+        
         </div>
         
-      </div>
+      
     </div>
   </div>
 </template>
@@ -24,5 +25,6 @@ export default {
 .main-container {
   height: 100vh;
 }
+
 
 </style>
