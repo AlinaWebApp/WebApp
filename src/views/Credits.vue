@@ -1,23 +1,23 @@
 <template>
-  <div class="main-container">
+  <div class="main-content">
     <header-main-page />
-
-    <div class="content-container">
-      <title-about />
+    <div class="content">
+      <types-credits />
     </div>
   </div>
 </template>
 
 <script>
 import HeaderMainPage from "../components/Header.vue";
-import TitleAbout from "../components/Title.vue";
+import TypesCredits from "../components/TypesCredits.vue";
+
 export default {
-  components: { HeaderMainPage, TitleAbout },
+  components: { HeaderMainPage, TypesCredits },
 };
 </script>
 
 <style scoped>
-.main-container {
+.main-content {
   height: 100vh;
 }
 </style>
