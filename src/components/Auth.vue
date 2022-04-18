@@ -24,7 +24,7 @@
             type="password"
             placeholder="Password"
           />
-          <a href="#">Forgot your password?</a>
+          
           <button @click="login">Sign In</button>
         </form>
       </div>
@@ -38,8 +38,8 @@
             <button class="ghost" @click="signIn">Sign In</button>
           </div>
           <div class="overlay-panel overlay-right">
-            <h1>Hello, Friend!</h1>
-            <p>Enter your personal details and start journey with us</p>
+            <h1>Hello!</h1>
+            <p>Enter your personal details and create your account</p>
             <button class="ghost" @click.prevent="signUp">Sign Up</button>
           </div>
         </div>
